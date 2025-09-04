@@ -1,8 +1,8 @@
 const Education = ({ t }) => {
   return (
     <div className="bg-[#e2cbd02b] rounded-lg flex flex-col divide-y-1 divide-y divide-gray-200">
-      {t.main.education.list.map((item) => (
-        <div className="p-[1.5rem] flex flex-row justify-between items-center">
+      {t.main.education.list.map((item,key) => (
+        <div key={key} className="p-[1.5rem] flex flex-row justify-between items-center">
           <div className="flex flex-col text-sm">
             <span className="first:text-base">
               <h5 className="font-bold">{item.field} | {item.degree}</h5>

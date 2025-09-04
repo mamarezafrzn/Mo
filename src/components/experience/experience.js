@@ -10,8 +10,8 @@ const Experience = ({ t }) => {
           </div>
           <p className="italic">{item.about}</p>
           <ul className="pl-[1.5rem] list-disc">
-            {item.achievements.map((achievement) => (
-              <li className="mb-[0.25rem]">{achievement}</li>
+            {item.achievements.map((achievement,key) => (
+              <li key={key} className="mb-[0.25rem]">{achievement}</li>
             ))}
           </ul>
         </div>

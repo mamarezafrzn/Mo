@@ -64,6 +64,7 @@ const Projects = () => {
             className={` w-[30%] ${
               index % 2 == 0 ? "rounded-l-lg" : "rounded-r-lg"
             }`}
+            alt={`${project.title} Image`}
           />
           <div className="p-[1rem] flex flex-col">
             <h4>{project.title}</h4>
