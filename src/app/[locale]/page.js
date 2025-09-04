@@ -1,6 +1,6 @@
 "use client";
 
-import MainContainer from "@/components/MainContainer";
+import MainContainer from "@/components/mainContainer";
 
 export default function LocalePage() {
   return (
