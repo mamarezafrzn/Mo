@@ -1,3 +1,5 @@
+import { PROJECT_LIST_EN } from "@/components/projects/PROJECTS-INFO";
+
 const en = {
   title: "Welcome",
   categories: {
@@ -58,7 +60,7 @@ const en = {
         },
       ],
     },
-    projects: { title: "Projects" },
+    projects: { title: "Projects", projectList :PROJECT_LIST_EN },
     education: {
       title: "Education",
       list: [

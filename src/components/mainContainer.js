@@ -12,6 +12,8 @@ import imgGithub from "../../public/assets/Img/Icons/github.svg";
 import imgLinkedin from "../../public/assets/Img/Icons/linkedin.svg";
 import imgDeutschland from "../../public/assets/Img/Icons/germany-flag-icon.svg";
 import imgEngland from "../../public/assets/Img/Icons/united-kingdom-flag-icon.svg";
+import Logo from "../../public/assets/Img/Icons/Mo.svg";
+
 import About from "./about/about";
 import Experience from "./experience/experience";
 import Projects from "./projects/projects";
@@ -62,6 +64,7 @@ const MainContainer = () => {
     experience: experienceRef,
     projects: projectsRef,
     education: educationRef,
+    contact:contactRef
   };
 
   const scrollToSection = (id) => {
@@ -72,13 +75,15 @@ const MainContainer = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center justify-center overflow-auto">
       <div
         className="w-[80%] h-[90%] bg-[#ffffff]/50 backdrop-blur-lg border border-[#e2cbd0] text-[#3a2d2f]
     rounded-xl flex font-sans overflow-hidden"
       >
         <div className="w-[4rem] lg:w-[20%] h-full">
-          <div className="h-[4rem] border-b border-[#e2cbd0]"></div>
+          <div className="h-[4rem] border-b border-[#e2cbd0] px-[0.5rem] sm:px-[1rem] py-[0.1rem] sm:py-[0.5rem] overflow-hidden">
+            <Image src={Logo} className=""  style={{ height: '-webkit-fill-available', width: 'auto' }}/>
+          </div>
           <div className="lg:p-[1rem] ">
             <div className="">
               <h3 className="hidden lg:block">{t.categories.label}</h3>
@@ -115,19 +120,19 @@ const MainContainer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full border-l border-[#e2cbd0] flex flex-col">
+        <div className="w-full border-l border-[#e2cbd0] flex flex-col overflow-auto">
           <div className="bg-[#fdf4f7] h-[4rem] border-b border-[#e2cbd0] px-[1rem] flex items-center justify-end gap-[1rem] sticky top-0 z-10">
             <div className="relative  inline-block group text-center">
               <div className="flex flex-row items-center gap-[0.5rem] w-[3.5rem] justify-center bg-white/20 rounded-md p-1 border-b border-transparent group-hover:bg-white/25 group-hover:border-white group-hover:rounded-b-none cursor-pointer">
                 {Lang.name}
                 <Image src={Lang.icon} alt={Lang.name} className="w-[1rem]" />
               </div>
-              <div className="bg-white/20 hidden absolute z-1 rounded-b-md group-hover:block ">
+              <div className="bg-white hidden absolute z-1 rounded-b-xl group-hover:block">
                 {flag.map((btnLang) => (
                   <button
                     key={btnLang.name}
                     onClick={() => changeLang(btnLang.name)}
-                    className={` w-[3.5rem] justify-center text-center cursor-pointer hover:bg-white/20 flex flex-row items-center gap-[0.5rem] p-1 ${
+                    className={` w-[3.5rem] justify-center text-center cursor-pointer hover:white/20 flex flex-row items-center gap-[0.5rem] p-1 ${
                       btnLang.name == Lang && "bg-white/20"
                     }`}
                   >
@@ -145,7 +150,7 @@ const MainContainer = () => {
           </div>
           <div className="flex-1 overflow-y-auto scroll-pt-12 p-[1rem] flex flex-col gap-[2rem]">
             <div ref={aboutRef}>
-              <h1 className="text-2xl font-bold">Mo</h1>
+              {/* <h1 className="text-2xl font-bold">Mo</h1> */}
               <About t={t} />
             </div>
             <div ref={skillsRef}>

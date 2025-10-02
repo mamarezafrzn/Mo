@@ -13,6 +13,9 @@ module.exports = {
         sans: ['var(--font-inter)'],
         display: ['var(--font-playfair)'],
       },
+      height: {
+        'fill-available': '-webkit-fill-available',
+      }
     },
   },
   plugins: [],
