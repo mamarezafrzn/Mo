@@ -16,7 +16,7 @@ const de = {
   socials: { label: "Socials" },
   main: {
     aboutMe:
-      "Junior Front-End-Entwickler mit zwei Masterabschlüssen in Computertechnik und Projektmanagement. Spezialisiert auf die Entwicklung responsiver und skalierbarer Webanwendungen mit ReactJS, Next.js, TypeScript und modernen Front-End- Frameworks. Versiert in der Erstellung effizienter UI-Komponenten, komponentenbasierter Architekturen und der Optimierung der Anwendungsleistung. Engagiert sich für sauberen, wartbaren Code und bleibt stets auf dem neuesten Stand der Webtechnologien. Bereit, technisches Fachwissen zur Lösung komplexer Entwicklungsherausforderungen einzubringen.",
+      "Front-End-Entwickler mit zwei Masterabschlüssen in Computertechnik und Projektmanagement. Spezialisiert auf die Entwicklung responsiver und skalierbarer Webanwendungen mit ReactJS, Next.js, TypeScript und modernen Front-End- Frameworks. Versiert in der Erstellung effizienter UI-Komponenten, komponentenbasierter Architekturen und der Optimierung der Anwendungsleistung. Engagiert sich für sauberen, wartbaren Code und bleibt stets auf dem neuesten Stand der Webtechnologien. Bereit, technisches Fachwissen zur Lösung komplexer Entwicklungsherausforderungen einzubringen.",
     skills: { title: "Fähigkeiten" },
     experience: {
       title: "Erfahrung",

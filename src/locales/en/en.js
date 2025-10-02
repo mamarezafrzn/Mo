@@ -16,7 +16,7 @@ const en = {
   socials: { label: "Socials" },
   main: {
     aboutMe:
-      "  Junior Front-End Developer with dual Master’s degrees in Computer Engineering and Project Management. Specializes in building responsive, scalable web applications using ReactJS, Next.js, TypeScript, and modern front-end frameworks. Skilled in creating efficient UI components, implementing component-based architecture, and improving application performance. Focused on writing clean, maintainable code while staying up-to-date with the latest web technologies. Ready to contribute technical expertise to solve complex development challenges.",
+      "Front-End Developer with dual Master’s degrees in Computer Engineering and Project Management. Specializes in building responsive, scalable web applications using ReactJS, Next.js, TypeScript, and modern front-end frameworks. Skilled in creating efficient UI components, implementing component-based architecture, and improving application performance. Focused on writing clean, maintainable code while staying up-to-date with the latest web technologies. Ready to contribute technical expertise to solve complex development challenges.",
     skills: { title: "Skills" },
     experience: {
       title: "Experience",
