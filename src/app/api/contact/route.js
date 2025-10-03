@@ -77,105 +77,87 @@
 //   return NextResponse.json({ ok: true });
 // }
 
+// src/app/api/contact/route.js
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-const IS_DEBUG = process.env.DEBUG_CONTACT === '1';
-
-function json(data, status = 200) {
-  // In debug we return details; in prod we keep it minimal.
-  if (!IS_DEBUG && data?.details) delete data.details;
+function J(data, status = 200) {
   return NextResponse.json(data, { status });
 }
 
 export async function POST(req) {
   try {
-    // --- 0) Check required envs early ---
-    const required = [
-      'TURNSTILE_SECRET_KEY',
-      'SMTP_HOST','SMTP_PORT','SMTP_USER','SMTP_PASS',
-      'CONTACT_TO','CONTACT_FROM'
-    ];
-    const missing = required.filter(k => !process.env[k] || String(process.env[k]).trim() === '');
-    if (missing.length) {
-      return json({ ok:false, error:'missing_env', details:{ missing } }, 500);
+    // --- Normalize env (trim accidental spaces/newlines) ---
+    const ENV = {
+      TURNSTILE_SECRET_KEY: (process.env.TURNSTILE_SECRET_KEY || '').trim(),
+      SMTP_HOST: (process.env.SMTP_HOST || '').trim(),
+      SMTP_PORT: Number((process.env.SMTP_PORT || '465').trim()),
+      SMTP_USER: (process.env.SMTP_USER || '').trim(),
+      SMTP_PASS: (process.env.SMTP_PASS || '').replace(/\s+/g, '').trim(), // remove ALL spaces
+      CONTACT_FROM: (process.env.CONTACT_FROM || '').trim(),
+      CONTACT_TO: (process.env.CONTACT_TO || '').trim(),
+    };
+
+    // --- Required env checks ---
+    for (const k of [
+      'TURNSTILE_SECRET_KEY','SMTP_HOST','SMTP_PORT','SMTP_USER','SMTP_PASS','CONTACT_FROM','CONTACT_TO'
+    ]) if (!ENV[k]) return J({ ok:false, error:'server_misconfig' }, 500);
+
+    // Gmail requirement: from === user
+    if (ENV.CONTACT_FROM !== ENV.SMTP_USER) {
+      return J({ ok:false, error:'server_misconfig' }, 500);
     }
 
-    // --- 1) Read form ---
+    // --- Read form data ---
     const form = await req.formData();
     const name = (form.get('name') || '').toString().trim();
     const email = (form.get('email') || '').toString().trim();
     const message = (form.get('message') || '').toString().trim();
-    const company = (form.get('company') || '').toString().trim();
+    const company = (form.get('company') || '').toString().trim(); // honeypot
     const token = (form.get('cf-turnstile-response') || '').toString().trim();
 
-    if (!name || !email || !message) {
-      return json({ ok:false, error:'bad_request' }, 400);
-    }
-    if (company) {
-      // Honeypot ⇒ pretend success
-      return json({ ok:true });
-    }
+    if (!name || !email || !message) return J({ ok:false, error:'bad_request' }, 400);
+    if (company) return J({ ok:true }); // bot → pretend success
 
-    // --- 2) Verify Turnstile ---
-    if (!token) return json({ ok:false, error:'missing_token' }, 400);
-
-    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    // --- Verify Turnstile token ---
+    if (!token) return J({ ok:false, error:'missing_token' }, 400);
+    const ver = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      body: new URLSearchParams({
-        secret: process.env.TURNSTILE_SECRET_KEY,
-        response: token,
-      }),
+      body: new URLSearchParams({ secret: ENV.TURNSTILE_SECRET_KEY, response: token }),
     });
-    const verifyJson = await verifyRes.json();
-    if (!verifyJson.success) {
-      return json(
-        { ok:false, error:'captcha_failed', details: verifyJson['error-codes'] || verifyJson },
-        403
-      );
-    }
+    const verJson = await ver.json();
+    if (!verJson.success) return J({ ok:false, error:'captcha_failed' }, 403);
 
-    // --- 3) Build transporter (SMTP) ---
+    // --- Simple anti-link spam (optional) ---
+    const links = (message.match(/https?:\/\//gi) || []).length;
+    if (links > 3) return J({ ok:true });
+
+    // --- SMTP transport (Gmail App Password) ---
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: Number(process.env.SMTP_PORT) === 465,   // true for 465, false otherwise
-      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-      logger: IS_DEBUG,     // verbose logs in Vercel function logs
-      debug: IS_DEBUG,
+      host: ENV.SMTP_HOST,                  // smtp.gmail.com
+      port: ENV.SMTP_PORT,                  // 465 recommended
+      secure: ENV.SMTP_PORT === 465,        // true for 465, false for 587
+      auth: { user: ENV.SMTP_USER, pass: ENV.SMTP_PASS },
     });
 
-    // Optional: verify connection/auth. This throws helpful errors.
-    try {
-      await transporter.verify();
-    } catch (e) {
-      return json({
-        ok:false,
-        error:'smtp_verify_failed',
-        details:{ message: e.message, code: e.code }
-      }, 500);
-    }
+    // Optional: comment out if you want to skip a tiny extra roundtrip
+    await transporter.verify();
 
-    // --- 4) Send mail ---
+    // --- Send email ---
     const info = await transporter.sendMail({
-      from: `"${name}" <${process.env.CONTACT_FROM}>`,
-      to: process.env.CONTACT_TO,
-      replyTo: email,
+      from: `"${name}" <${ENV.CONTACT_FROM}>`, // MUST be your Gmail for Gmail SMTP
+      to: ENV.CONTACT_TO,
+      replyTo: email,                           // replies go to the visitor
       subject: `Portfolio contact: ${name}`,
       text: message,
     });
 
-    return json({ ok:true, id: info.messageId });
-  } catch (e) {
-    // In debug, show the exact error. Otherwise keep it generic.
-    return json({
-      ok:false,
-      error: IS_DEBUG ? 'server_error_debug' : 'server_error',
-      details: IS_DEBUG ? { message: e.message, stack: e.stack } : undefined
-    }, 500);
+    return J({ ok:true, id: info.messageId });
+  } catch {
+    return J({ ok:false, error:'server_error' }, 500);
   }
 }
 
