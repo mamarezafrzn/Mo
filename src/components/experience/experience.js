@@ -1,8 +1,8 @@
 const Experience = ({ t }) => {
   return (
-    <div className="bg-[#e2cbd02b] rounded-xl p-[1rem]">
+    <div className="bg-[#e2cbd02b] rounded-xl lg-p-[1rem]">
       {t.main.experience.list.map((item) => (
-        <div key={item.title} className="hover:outline hover:outline-[#e2cbd0] mb-[0.5rem] lg-p-[1rem] rounded-xl flex flex-col gap-[1rem]">
+        <div key={item.title} className="hover:outline hover:outline-[#e2cbd0] mb-[0.5rem] p-[1rem] rounded-xl flex flex-col gap-[1rem]">
           <div className="flex flex-row flex-wrap justify-between">
             {" "}
             <span className="text-md font-bold">{item.title}</span>
