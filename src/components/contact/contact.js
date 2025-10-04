@@ -94,7 +94,7 @@ const Contact = ({ t }) => {
       <form
         ref={formRef}
         onSubmit={onSubmit}
-        className="flex flex-col gap-[2rem] w-[60%] m-auto mt-10"
+        className="flex flex-col gap-[2rem] lg:w-[60%] m-auto mt-10"
       >
         {/* <p class="text-sm text-gray-500">I’ll get back to you within 24h.</p> */}
         <div className="flex flex-col">
@@ -155,13 +155,14 @@ const Contact = ({ t }) => {
         />
 
         {/* Turnstile widget (uses your public site key) */}
-        <div
-          className="cf-turnstile"
-          data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-          data-callback="onTurnstileSuccess"
-          data-expired-callback="onTurnstileExpired"
-        />
-
+        <div className="w-full max-w-md mx-auto overflow-hidden">
+          <div
+            className="cf-turnstile"
+            data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+            data-callback="onTurnstileSuccess"
+            data-expired-callback="onTurnstileExpired"
+          />
+        </div>
         <button
           disabled={!ready || submitting}
           className="rounded px-4 py-2 border font-medium hover:opacity-90 disabled:opacity-50"

@@ -57,13 +57,13 @@ const Projects = ({ t }) => {
           href={project.link}
           target="_blank"
           key={index}
-          className={`outline outline-[#e2cbd0] rounded-lg w-[90%] flex relative group cursor-pointer shadow-sm hover:shadow-md transition ${
+          className={`outline outline-[#e2cbd0] rounded-lg w-full flex flex-col relative group cursor-pointer shadow-sm hover:shadow-md transition ${
             index % 2 == 0
-              ? "justify-start"
-              : "justify-end ml-auto flex-row-reverse"
+              ? "lg:justify-start lg:flex-row"
+              : "lg:justify-end ml-auto lg:flex-row-reverse"
           }`}
         >
-          <div className="relative w-[40%] h-50">
+          <div className="relative w-full lg:w-[40%] aspect-[5/3]">
             {" "}
             {/* <-- give it a height (h-48) or use aspect-ratio */}
             <Image
@@ -71,8 +71,8 @@ const Projects = ({ t }) => {
               alt={`${project.title} Image`}
               fill
               className={`${
-                index % 2 === 0 ? "rounded-l-lg" : "rounded-r-lg"
-              } object-cover`}
+                index % 2 === 0 ? "lg:rounded-l-lg" : "lg:rounded-r-lg"
+              } object-cover rounded-t-lg lg:rounded-tr-none`}
             />
             {/* OVERLAY — placed inside image wrapper so text sits on the image.
             group-hover uses the parent `.group` so hovering anywhere on parent triggers it */}
@@ -85,7 +85,7 @@ const Projects = ({ t }) => {
           <div className="p-[1rem] flex flex-col">
             <h4 className="text-lg font-semibold">{project.title}</h4>
             <p>{project.description}</p>
-            <div className="flex flex-row content-center items-center mt-auto gap-[0.1rem]">
+            <div className="flex flex-row flex-wrap content-center items-center mt-auto gap-[0.1rem]">
               Tech:
               {project.technologies.map((tech) => (
                 <span key={tech} className="rounded-xl bg-gray-100 p-1">
