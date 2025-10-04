@@ -5,8 +5,8 @@ import img_OE from "../../../public/assets/Img/projects/OE.png";
 import img_yektoman from "../../../public/assets/Img/projects/Yektoman.png";
 import img_LMS from "../../../public/assets/Img/projects/LMS.png";
 import img_ansar from "../../../public/assets/Img/projects/ansar.png";
-const Projects = ({ t }) => {
 
+const Projects = ({ t }) => {
   const PROJECT_LIST = [
     {
       title: "SamChamp",
@@ -53,7 +53,9 @@ const Projects = ({ t }) => {
   return (
     <div className="flex flex-col gap-[2rem]">
       {t.main.projects?.projectList.map((project, index) => (
-        <div
+        <a
+          href={project.link}
+          target="_blank"
           key={index}
           className={`outline outline-[#e2cbd0] rounded-lg w-[90%] flex relative group cursor-pointer shadow-sm hover:shadow-md transition ${
             index % 2 == 0
@@ -92,7 +94,7 @@ const Projects = ({ t }) => {
               ))}
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   );

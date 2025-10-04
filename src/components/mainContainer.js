@@ -47,8 +47,16 @@ const MainContainer = () => {
   };
 
   const socials = [
-    { name: "Linkedin", icon: imgLinkedin },
-    { name: "Github", icon: imgGithub },
+    {
+      name: "Linkedin",
+      icon: imgLinkedin,
+      link: "https://www.linkedin.com/in/mo-firouzabadi-nejad/",
+    },
+    {
+      name: "Github",
+      icon: imgGithub,
+      link: "https://github.com/mamarezafrzn",
+    },
   ];
 
   const aboutRef = useRef(null);
@@ -64,7 +72,7 @@ const MainContainer = () => {
     experience: experienceRef,
     projects: projectsRef,
     education: educationRef,
-    contact:contactRef
+    contact: contactRef,
   };
 
   const scrollToSection = (id) => {
@@ -82,7 +90,11 @@ const MainContainer = () => {
       >
         <div className="w-[4rem] lg:w-[20%] h-full">
           <div className="h-[4rem] border-b border-[#e2cbd0] px-[0.5rem] sm:px-[1rem] py-[0.1rem] sm:py-[0.5rem] overflow-hidden">
-            <Image src={Logo} className=""  style={{ height: '-webkit-fill-available', width: 'auto' }}/>
+            <Image
+              src={Logo}
+              className=""
+              style={{ height: "-webkit-fill-available", width: "auto" }}
+            />
           </div>
           <div className="lg:p-[1rem] ">
             <div className="">
@@ -104,7 +116,9 @@ const MainContainer = () => {
               <h3 className="hidden lg:block">{t.socials.label}</h3>
               <ul className="pb-[0.5rem] pt-[0.5rem] flex flex-col items-center">
                 {socials.map((item) => (
-                  <div
+                  <a
+                    href={item.link}
+                    target="_blank"
                     key={item.name}
                     className="flex items-center w-fit lg:w-full cursor-pointer hover:bg-black/30 rounded-md p-[0.5rem] pl-[0.5rem] gap-[1rem] "
                   >
@@ -114,7 +128,7 @@ const MainContainer = () => {
                       alt={item.name}
                     />
                     <li className="hidden lg:block">{item.name}</li>
-                  </div>
+                  </a>
                 ))}
               </ul>
             </div>
