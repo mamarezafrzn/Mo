@@ -52,7 +52,7 @@ const Skills = () => {
 
   return (
     <>
-      <ul className="flex flex-row justify-between flex-wrap justify-center p-[1rem] gap-[1rem] lg:gap-[2rem] ">
+      <ul className="flex flex-row justify-between flex-wrap justify-center md:p-[1rem] gap-[1rem] lg:gap-[2rem] ">
         {skills_list.map((item) => (
           <li
             key={item.name}
