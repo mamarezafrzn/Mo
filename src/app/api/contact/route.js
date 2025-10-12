@@ -114,6 +114,7 @@ export async function POST(req) {
     // --- Read form data ---
     const form = await req.formData();
     const name = (form.get('name') || '').toString().trim();
+    const title = (form.get('title') || '').toString().trim();
     const email = (form.get('email') || '').toString().trim();
     const message = (form.get('message') || '').toString().trim();
     const company = (form.get('company') || '').toString().trim(); // honeypot
@@ -151,7 +152,7 @@ export async function POST(req) {
       from: `"${name}" <${ENV.CONTACT_FROM}>`, // MUST be your Gmail for Gmail SMTP
       to: ENV.CONTACT_TO,
       replyTo: email,                           // replies go to the visitor
-      subject: `Portfolio contact: ${name}`,
+      subject: `Subject: ${title}`,
       text: message,
     });
 
