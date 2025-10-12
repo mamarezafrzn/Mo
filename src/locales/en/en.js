@@ -15,15 +15,29 @@ const en = {
   },
   socials: { label: "Socials" },
   main: {
-    aboutMe:
-      "Front-End Developer with dual Master’s degrees in Computer Engineering and Project Management. Specializes in building responsive, scalable web applications using ReactJS, Next.js, TypeScript, and modern front-end frameworks. Skilled in creating efficient UI components, implementing component-based architecture, and improving application performance. Focused on writing clean, maintainable code while staying up-to-date with the latest web technologies. Ready to contribute technical expertise to solve complex development challenges.",
+    aboutMe: (
+      <>
+        {/* A developer who genuinely loves building things that people enjoy using. <br />
+        I care about smooth experiences, thoughtful details, and bringing ideas to life through code. */}
+        Front-End Developer with dual Master’s degrees in Computer Engineering
+        and Project Management. Specializes in building responsive, scalable web
+        applications using ReactJS, Next.js, TypeScript, and modern front-end
+        frameworks. Skilled in creating efficient UI components, implementing
+        component-based architecture, and improving application performance.
+        Focused on writing clean, maintainable code while staying up-to-date
+        with the latest web technologies. Ready to contribute technical
+        expertise to solve complex development challenges.
+      </>
+    ),
+    // "Front-End Developer with dual Master’s degrees in Computer Engineering and Project Management. Specializes in building responsive, scalable web applications using ReactJS, Next.js, TypeScript, and modern front-end frameworks. Skilled in creating efficient UI components, implementing component-based architecture, and improving application performance. Focused on writing clean, maintainable code while staying up-to-date with the latest web technologies. Ready to contribute technical expertise to solve complex development challenges.",
     skills: { title: "Skills" },
     experience: {
       title: "Experience",
       list: [
         {
           title: "Operate Ease",
-          duration: "Nov 2024 - Feb 2025",
+          Role: "React Developer",
+          duration: "Nov 2024 - May 2025",
           about:
             "OperateEase is a startup focused on developing automation solutions for the hospitality industry, streamlining operations for hotels, restaurants, and service providers.",
           achievements: [
@@ -35,7 +49,8 @@ const en = {
         },
         {
           title: "Apadana Data Cloud",
-          duration: "Jul 2022 - Mar 2023",
+          Role: "Front-end Developer",
+          duration: "Jul 2022 - Sep 2023",
           about:
             "Apadana Data Cloud is a technology company specializing in software development, delivering custom web solutions for clients across various industries.",
           achievements: [
@@ -47,7 +62,8 @@ const en = {
         },
         {
           title: "Arman Tadbir Naghsh Jahan Brokerage Co.",
-          duration: "Feb 2022 - Jun 2022",
+          Role: "Front-end Developer",
+          duration: "Feb 2021 - Jun 2022",
           about:
             "Arman Tadbir Naghsh Jahan is a well-established brokerage firm in Iran, providing financial services and online trading solutions, with a network of over 15 branches across the country.",
           achievements: [
@@ -60,7 +76,7 @@ const en = {
         },
       ],
     },
-    projects: { title: "Projects", projectList :PROJECT_LIST_EN },
+    projects: { title: "Projects", projectList: PROJECT_LIST_EN },
     education: {
       title: "Education",
       list: [
@@ -70,12 +86,11 @@ const en = {
           degree: "M.Sc.",
           finishedDate: "09/2024",
           location: "Berlin-Germany",
-          thesis:{
+          thesis: {
             title: "Thesis",
             description:
-            "Investigating the Transformative Potential of Web Accessibility for People with Disabilities on E-commerce Websites",
-          }
-           ,
+              "Investigating the Transformative Potential of Web Accessibility for People with Disabilities on E-commerce Websites",
+          },
         },
         {
           university: "University of Guilan",
@@ -94,7 +109,11 @@ const en = {
           thesis: "",
         },
       ],
-    },contact:{title:"Contact",form:{subject:"Subject",message:"Message"}}
+    },
+    contact: {
+      title: "Contact",
+      form: { subject: "Subject", message: "Message" },
+    },
   },
 };
 export default en;

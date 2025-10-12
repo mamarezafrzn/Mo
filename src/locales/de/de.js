@@ -15,15 +15,32 @@ const de = {
   },
   socials: { label: "Socials" },
   main: {
-    aboutMe:
-      "Front-End-Entwickler mit zwei Masterabschlüssen in Computertechnik und Projektmanagement. Spezialisiert auf die Entwicklung responsiver und skalierbarer Webanwendungen mit ReactJS, Next.js, TypeScript und modernen Front-End- Frameworks. Versiert in der Erstellung effizienter UI-Komponenten, komponentenbasierter Architekturen und der Optimierung der Anwendungsleistung. Engagiert sich für sauberen, wartbaren Code und bleibt stets auf dem neuesten Stand der Webtechnologien. Bereit, technisches Fachwissen zur Lösung komplexer Entwicklungsherausforderungen einzubringen.",
+    aboutMe: (
+      <>
+        {/* Ein Entwickler, der es wirklich liebt, Dinge zu bauen, die Menschen
+        gerne benutzen. <br />
+        Mir liegt viel an flüssigen Erlebnissen, durchdachten Details und daran,
+        Ideen mit Code zum Leben zu erwecken. */}
+        Front-End-Entwickler mit zwei Masterabschlüssen in Computertechnik und
+        Projektmanagement. Spezialisiert auf die Entwicklung responsiver und
+        skalierbarer Webanwendungen mit ReactJS, Next.js, TypeScript und
+        modernen Front-End- Frameworks. Versiert in der Erstellung effizienter
+        UI-Komponenten, komponentenbasierter Architekturen und der Optimierung
+        der Anwendungsleistung. Engagiert sich für sauberen, wartbaren Code und
+        bleibt stets auf dem neuesten Stand der Webtechnologien. Bereit,
+        technisches Fachwissen zur Lösung komplexer
+        Entwicklungsherausforderungen einzubringen.
+      </>
+    ),
+    // "Front-End-Entwickler mit zwei Masterabschlüssen in Computertechnik und Projektmanagement. Spezialisiert auf die Entwicklung responsiver und skalierbarer Webanwendungen mit ReactJS, Next.js, TypeScript und modernen Front-End- Frameworks. Versiert in der Erstellung effizienter UI-Komponenten, komponentenbasierter Architekturen und der Optimierung der Anwendungsleistung. Engagiert sich für sauberen, wartbaren Code und bleibt stets auf dem neuesten Stand der Webtechnologien. Bereit, technisches Fachwissen zur Lösung komplexer Entwicklungsherausforderungen einzubringen.",
     skills: { title: "Fähigkeiten" },
     experience: {
       title: "Erfahrung",
       list: [
         {
           title: "Operate Ease",
-          duration: "Nov 2024 - Feb 2025",
+          Role: "React Entwickler",
+          duration: "Nov 2024 - Mai 2025",
           about:
             "OperateEase ist ein Start-up, das sich auf die Entwicklung von Automatisierungslösungen für die Hotel- und Gastgewerbebranche spezialisiert hat, um Abläufe in Hotels, Restaurants und bei Dienstleistern zu optimieren.",
           achievements: [
@@ -35,7 +52,8 @@ const de = {
         },
         {
           title: "Apadana Data Cloud",
-          duration: "Jul 2022 - Mär 2023",
+          Role: "Front-end Entwickler",
+          duration: "Jul 2022 - Sep 2023",
           about:
             "Apadana Data Cloud ist ein Technologieunternehmen, das sich auf Softwareentwicklung spezialisiert hat und maßgeschneiderte Weblösungen für Kunden aus verschiedenen Branchen anbietet.",
           achievements: [
@@ -47,7 +65,8 @@ const de = {
         },
         {
           title: "Arman Tadbir Naghsh Jahan Brokerage Co.",
-          duration: "Feb 2022 - Jun 2022",
+          Role: "Front-end Entwickler",
+          duration: "Feb 2021 - Jun 2022",
           about:
             "Arman Tadbir Naghsh Jahan ist ein etabliertes Maklerunternehmen mit über 15 Niederlassungen im ganzen Iran, das Finanzdienstleistungen und Online-Handelslösungen anbietet.",
           achievements: [
@@ -85,7 +104,8 @@ const de = {
           thesis: "",
         },
         {
-          university: "Shamsipour Technical and Vocational College (Technisches und Berufskolleg Shamsipour)",
+          university:
+            "Shamsipour Technical and Vocational College (Technisches und Berufskolleg Shamsipour)",
           field: "Softwaretechnik",
           degree: "B.Sc.",
           finishedDate: "08/2019",
@@ -93,7 +113,11 @@ const de = {
           thesis: "",
         },
       ],
-    },contact:{title:"Kontact",form:{subject:"Betreff",message:"Nachricht"}}
+    },
+    contact: {
+      title: "Kontact",
+      form: { subject: "Betreff", message: "Nachricht" },
+    },
   },
 };
 export default de;

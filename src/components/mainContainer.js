@@ -75,12 +75,18 @@ const MainContainer = () => {
     contact: contactRef,
   };
 
+  const [showLangs,setShowLangs] = useState(false)
+
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
   };
+
+  const onShowLangClick= () =>{
+      setShowLangs(!showLangs)
+  }
 
   return (
     <div className="w-screen h-screen flex items-center justify-center overflow-auto">
@@ -137,11 +143,11 @@ const MainContainer = () => {
         <div className="w-full border-l border-[#e2cbd0] flex flex-col overflow-auto">
           <div className="bg-[#fdf4f7] h-[4rem] border-b border-[#e2cbd0] px-[1rem] flex items-center justify-end gap-[1rem] sticky top-0 z-10">
             <div className="relative  inline-block group text-center">
-              <div className="flex flex-row items-center gap-[0.5rem] w-[3.5rem] justify-center bg-white/20 rounded-md p-1 border-b border-transparent group-hover:bg-white/25 group-hover:border-white group-hover:rounded-b-none cursor-pointer">
+              <div onClick={onShowLangClick} className={`flex flex-row items-center gap-[0.5rem] w-[3.5rem] justify-center bg-white/20 rounded-md p-1 border-b border-transparent group-hover:bg-white/25 group-hover:border-white group-hover:rounded-b-none cursor-pointer`}>
                 {Lang.name}
                 <Image src={Lang.icon} alt={Lang.name} className="w-[1rem]" />
               </div>
-              <div className="bg-white hidden absolute z-1 rounded-b-xl group-hover:block">
+              <div className={`bg-white absolute z-1 rounded-b-xl ${showLangs ? 'block' : 'hidden'} group-hover:block`}>
                 {flag.map((btnLang) => (
                   <button
                     key={btnLang.name}

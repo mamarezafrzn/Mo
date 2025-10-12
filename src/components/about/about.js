@@ -6,6 +6,10 @@ const About = ({ t }) => {
   return (
     <>
       <p>{t.main.aboutMe}</p>
+
+
+
+
       <div className="mt-[1rem] flex flex-row gap-[1rem]">
         {/* <a
           className="flex flex-row gap-[0.5rem] items-center p-[0.5rem] border rounded-xl border-[#e2cbd0] hover:bg-[#fbe9f0] text-sm"
@@ -15,7 +19,7 @@ const About = ({ t }) => {
           rel="noopener noreferrer"
         > */}
         <a
-          href="https://drive.google.com/file/d/1m6Vvx49MzhmlXl-WKYOYQTpHTXw98l1F/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1fyGCSKIAuraxExJ4wPkdhE644GxscUJg/view?usp=drive_link"
           target="_blank"
           className="flex flex-row gap-[0.5rem] items-center p-[0.5rem] border rounded-xl border-[#e2cbd0] hover:bg-[#fbe9f0] text-sm"
         >
@@ -24,7 +28,7 @@ const About = ({ t }) => {
             alt="Resume English Download"
             className="w-[0.8rem] h-[0.8rem]"
           />{" "}
-          Resume En
+          Resume
         </a>
         {/* <a
           className="flex flex-row gap-[0.5rem] items-center p-[0.5rem] border rounded-xl border-[#e2cbd0] hover:bg-[#fbe9f0] text-sm"
@@ -36,14 +40,14 @@ const About = ({ t }) => {
         <a
           className="flex flex-row gap-[0.5rem] items-center p-[0.5rem] border rounded-xl border-[#e2cbd0] hover:bg-[#fbe9f0] text-sm"
           target="_blank"
-          href="https://drive.google.com/file/d/1IX6OcDfXnq6Ob75OgEOWve4LNb4yxDyu/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1oHgxTZaHfs3AOVDhNrkK8W7ZQyF02USJ/view?usp=drive_link"
         >
           <Image
             src={imgDownload}
             alt="Resume Deutsch Download"
             className="w-[0.8rem] h-[0.8rem]"
           />{" "}
-          Resume De
+          Lebenslauf
         </a>
       </div>
     </>
