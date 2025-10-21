@@ -91,7 +91,7 @@ const MainContainer = () => {
   return (
     <div className="w-screen h-screen flex items-center justify-center overflow-auto">
       <div
-        className="w-[98%] md:w-[80%] h-[90%] bg-[#ffffff]/50 backdrop-blur-lg border border-[#e2cbd0] text-[#3a2d2f]
+        className=" max-w-[1400px] w-[98%] md:w-[80%] h-[90%] bg-[#ffffff]/50 backdrop-blur-lg border border-[#e2cbd0] text-[#3a2d2f]
     rounded-xl flex font-sans overflow-hidden"
       >
         <div className="w-[4rem] lg:w-[20%] h-full">
